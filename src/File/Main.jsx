@@ -31,7 +31,7 @@ export default function Main() {
               <input className='ml-3 mx-1' onClick={showAccordingShow} type={"radio"} value = "Show" name="choose" id='show' /><label htmlFor='show'>Show</label>
               <br />
               {(show===1 && input.length===0) ? <div>Enter actor name below</div> : ((show===0 && input.length===0) && <div>Enter show name below</div>)}
-              <input className='input' type={"text"} placeholder="eg. friends or akon" onChange={(e)=>{inputValue(e)}}/><br /><br />
+              <input className='input' type={"text"} placeholder="eg. friends or shakira" onChange={(e)=>{inputValue(e)}}/><br /><br />
           </div>
           <div className="container">
               {show===1 ? <Actor inputVal = {input} inputHitted = {checkInput}/> : show===0 && <Movie inputVal = {input} inputHitted = {checkInput}/>}
