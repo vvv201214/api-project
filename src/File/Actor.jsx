@@ -20,6 +20,8 @@ export default function Actor(props) {
         return sum.body.firstChild.textContent;
     }
 
+    console.log("actor");
+
   useEffect(()=>{
       let url = `https://api.tvmaze.com/search/people?q=${props.inputVal}`;
       axios.get(url)
@@ -41,18 +43,18 @@ export default function Actor(props) {
         <div className='movie'>
             {(info.length > 0) ? info.map((elem) => {
                 return(
-                    <div className='card mb-5' key={elem._embedded.show.id}>
+                    <div className='main-card card mb-5' key={elem._embedded.show.id}>
                         {count!==elem._embedded.show.id ? <div className='card-body'>
                             <div>{(elem._embedded.show.image !== null) ? <img className='card-img-top' src={elem._embedded.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div>
                             <div className='card-title mt-3'><h6>{elem._embedded.show.name}</h6></div>
                             {(elem._embedded.show.rating.average !== null) ? <div className='card-text'>⭐ {elem._embedded.show.rating.average}</div> : <div className='card-text'>⭐ 0.0</div>}
                             <div className='summary1 card-text'>{getHtmlFromSummary(elem._embedded.show.summary)}</div>
-                            <button onClick={(e)=>{showMore(elem._embedded.show.id)}} className='btn-warning mt-2'>Read More</button>
+                            <button onClick={(e)=>{showMore(elem._embedded.show.id)}} className='btn btn-warning mt-2'>Read More</button>
                         </div> :
                         <div className='card-body'>
                             <div className='card-title mt-3'><h6>{elem._embedded.show.name}</h6></div>
                             <div className='summary2 card-text'>{getHtmlFromSummary(elem._embedded.show.summary)}</div>
-                            <button onClick={(e)=>{showLess(e)}} className='btn-danger mt-2'>Read Less</button>
+                            <button onClick={(e)=>{showLess(e)}} className='btn btn-danger mt-2'>Read Less</button>
                         </div>}
                     </div>
                 )

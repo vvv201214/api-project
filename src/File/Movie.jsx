@@ -22,7 +22,6 @@ export default function Movie(props) {
         let url = `https://api.tvmaze.com/search/shows?q=${props.inputVal}`;
         axios.get(url)
         .then((res)=>{
-            console.log(res.data);
             setInfo([...(res.data)]);
         })
     },[props])
@@ -31,18 +30,18 @@ export default function Movie(props) {
     <div className='movie'>
         {(info.length > 0) ? info.map((elem) => {
             return(
-                <div className='card mb-5' key={elem.show.id}>
+                <div className='main-card card mb-5' key={elem.show.id}>
                     {count!==elem.show.id ? <div className='card-body'>
                         <div>{(elem.show.image !== null) ? <img className='card-img-top' src={elem.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div>
                         <div className='card-title mt-3'><h6>{elem.show.name}</h6></div>
                         {(elem.show.rating.average !== null) ? <div className='card-text'> ⭐ {elem.show.rating.average}</div> : <div className='card-text'>⭐ 0.0</div>}
                         <div className='summary1 card-text'>{getHtmlFromSummary(elem.show.summary)}</div>
-                        <button onClick={(e)=>{showMore(elem.show.id)}} className='btn-warning mt-2'>Read More</button>
+                        <button onClick={(e)=>{showMore(elem.show.id)}} className='btn btn-warning mt-2'>Read More</button>
                     </div> :
                     <div className='card-body'>
                         <div className='card-title mt-3'><h6>{elem.show.name}</h6></div>
                         <div className='summary2 card-text'>{getHtmlFromSummary(elem.show.summary)}</div>
-                        <button onClick={(e)=>{showLess(e)}} className='btn-danger mt-2'>Read Less</button>
+                        <button onClick={(e)=>{showLess(e)}} className='btn btn-danger mt-2'>Read Less</button>
                     </div>}
                 </div>
             )
