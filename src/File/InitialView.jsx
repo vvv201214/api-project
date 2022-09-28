@@ -55,7 +55,7 @@ export default function InitialView() {
             <div className="carousel-inner">
                 <div className="carousel-item active front-card-img" >                
                     <div className="card front-card-img">
-                        <a href='www.google.com'>
+                        <a href='/'>
                         <img className="d-block w-100 card-img " src={posters[posterRandomIndex.current]} alt="Card image" />
                         </a>
                     </div>                
@@ -63,7 +63,7 @@ export default function InitialView() {
             
             <div className="carousel-item front-card-img" >
                 <div className="card front-card-img">
-                    <a href='www.google.com'>
+                    <a href='/'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current+1)]} alt="Card image" />
                     </a>
                 </div>                 
@@ -71,7 +71,7 @@ export default function InitialView() {
 
             <div className="carousel-item front-card-img" >
                 <div className="card front-card-img">
-                    <a href='www.google.com'>
+                    <a href='/'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current-1)]} alt="Card image" />
                     </a>
                 </div>                   
