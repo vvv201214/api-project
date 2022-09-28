@@ -43,16 +43,17 @@ export default function InitialView() {
         }) 
     },[])
 
+
   return (
     <>
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" className="carousel slide"  data-interval="3000">
             <ol className="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div className="carousel-inner">
-                <div className="carousel-item active front-card-img">                
+                <div className="carousel-item active front-card-img" >                
                     <div className="card front-card-img">
                         <a href='www.google.com'>
                         <img className="d-block w-100 card-img " src={posters[posterRandomIndex.current]} alt="Card image" />
@@ -60,7 +61,7 @@ export default function InitialView() {
                     </div>                
                 </div>
             
-            <div className="carousel-item front-card-img">
+            <div className="carousel-item front-card-img" >
                 <div className="card front-card-img">
                     <a href='www.google.com'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current+1)]} alt="Card image" />
@@ -68,7 +69,7 @@ export default function InitialView() {
                 </div>                 
             </div>
 
-            <div className="carousel-item front-card-img">
+            <div className="carousel-item front-card-img" >
                 <div className="card front-card-img">
                     <a href='www.google.com'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current-1)]} alt="Card image" />
@@ -85,7 +86,7 @@ export default function InitialView() {
             <span className="sr-only">Next</span>
         </a>
     </div>
-    
+
     <h4 className='my-2'>Popular and Trending Show</h4>
     <div className='movie items'>
         {(info.length > 0) && info.map((elem) => {
