@@ -34,7 +34,7 @@ export default function Main() {
               <input className='input' type={"text"} placeholder="eg. friends or shakira" onChange={(e)=>{inputValue(e)}}/><br /><br />
           </div>
           <div className="container bottom-container">
-              {input.length === 0 && <InitialView /> }
+              {input.length === 0 ? <InitialView /> : (show === null && <div>Please select actor or show</div>)}
               {show===1 ? <Actor inputVal = {input} inputHitted = {checkInput}/> : show===0 && <Movie inputVal = {input} inputHitted = {checkInput}/>}
               
           </div>

@@ -33,7 +33,6 @@ export default function Actor(props) {
               setInfo(newRes.data);
             })
           }
-
       })   
   },[props])
 
@@ -45,7 +44,7 @@ export default function Actor(props) {
                 return(
                     <div className='main-card card mb-5' key={elem._embedded.show.id}>
                         {count!==elem._embedded.show.id ? <div className='card-body'>
-                            <div>{(elem._embedded.show.image !== null) ? <img className='card-img-top' src={elem._embedded.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div>
+                        <a href={elem._embedded.show.url}><div>{(elem._embedded.show.image !== null) ? <img className='card-img-top' src={elem._embedded.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div></a>
                             <div className='card-title mt-3'><h6>{elem._embedded.show.name}</h6></div>
                             {(elem._embedded.show.rating.average !== null) ? <div className='card-text'>⭐ {elem._embedded.show.rating.average}</div> : <div className='card-text'>⭐ 0.0</div>}
                             <div className='summary1 card-text'>{getHtmlFromSummary(elem._embedded.show.summary)}</div>

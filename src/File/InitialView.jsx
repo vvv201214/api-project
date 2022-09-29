@@ -1,5 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 import axios from "axios";
+import Slider from "react-slick";
+
 
 export default function InitialView() {
     let posters = [
@@ -43,49 +45,41 @@ export default function InitialView() {
         }) 
     },[])
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 800,
+        autoplaySpeed: 3000,
+        cssEase: "linear"
+      };
 
   return (
     <>
-        <div id="carouselExampleIndicators" className="carousel slide"  data-interval="3000">
-            <ol className="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div className="carousel-inner">
-                <div className="carousel-item active front-card-img" >                
-                    <div className="card front-card-img">
-                        <a href='/'>
-                        <img className="d-block w-100 card-img " src={posters[posterRandomIndex.current]} alt="Card image" />
-                        </a>
-                    </div>                
-                </div>
-            
-            <div className="carousel-item front-card-img" >
-                <div className="card front-card-img">
-                    <a href='/'>
+        <Slider {...settings}>
+          <div>
+            <div className="card front-card-img">
+                <a href='/'>
+                    <img className="d-block w-100 card-img " src={posters[posterRandomIndex.current]} alt="Card image" />
+                </a>
+            </div> 
+          </div>
+          <div>
+            <div className="card front-card-img">
+                <a href='/'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current+1)]} alt="Card image" />
-                    </a>
-                </div>                 
-            </div>
-
-            <div className="carousel-item front-card-img" >
-                <div className="card front-card-img">
-                    <a href='/'>
+                </a>
+            </div> 
+          </div>
+          <div>
+            <div className="card front-card-img">
+                <a href='/'>
                     <img className="d-block w-100 card-img " src={posters[(posterRandomIndex.current-1)]} alt="Card image" />
-                    </a>
-                </div>                   
-            </div>
-        </div>
-        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-        </a>
-        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-        </a>
-    </div>
+                </a>
+            </div> 
+          </div>
+        </Slider>
 
     <h4 className='my-2'>Popular and Trending Show</h4>
     <div className='movie items'>
@@ -93,7 +87,7 @@ export default function InitialView() {
             return(
                 <div className='main-card card mb-5' key={elem.show.id}>
                     {count!==elem.show.id ? <div className='card-body'>
-                        <div>{(elem.show.image !== null) ? <img className='card-img-top' src={elem.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div>
+                    <a href={elem.show.url}><div>{(elem.show.image !== null) ? <img className='card-img-top' src={elem.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div></a>
                         <div className='card-title mt-3'><h6>{elem.show.name}</h6></div>
                         {(elem.show.rating.average !== null) ? <div className='card-text'> ⭐ {elem.show.rating.average}</div> : <div className='card-text'>⭐ 0.0</div>}
                         <div className='summary1 card-text'>{getHtmlFromSummary(elem.show.summary)}</div>
