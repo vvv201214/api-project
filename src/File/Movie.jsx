@@ -33,7 +33,7 @@ export default function Movie(props) {
             return(
                 <div className='main-card card mb-5' key={elem.show.id}>
                     {count!==elem.show.id ? <div className='card-body'>
-                    <a href={elem.show.url}><div>{(elem.show.image !== null) ? <img className='card-img-top' src={elem.show.image.medium} /> : <div className='card-img-top no-image'>Image not found</div>}</div></a>
+                    <a href={elem.show.url}><div>{(elem.show.image !== null) ? <img className='card-img-top' src={elem.show.image.medium} /> : <img className='card-img-top' src="https://static.tvmaze.com/images/no-img/no-img-portrait-text.png" />}</div></a>
                         <div className='card-title mt-3'><h6>{elem.show.name}</h6></div>
                         {(elem.show.rating.average !== null) ? <div className='card-text'> ⭐ {elem.show.rating.average}</div> : <div className='card-text'>⭐ 0.0</div>}
                         <div className='summary1 card-text'>{getHtmlFromSummary(elem.show.summary)}</div>
